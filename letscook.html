@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LET'S COOK</title>
+  <style>
+    div {
+      padding: 20px;
+    }
+    body {
+      background-color: #000000;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .header {
+      background-image: url(file:///C:/Users/Krishna/Desktop/assets/low-poly-grid-haikei.svg);
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      font-family: 'Montserrat';
+      font-size: larger;
+    }
+    .header img {
+      width: 20%; /* Adjust the size of the logo */
+      height: auto; /* Maintain aspect ratio */
+    }
+    .header-text {
+      margin-left: 20px; /* Adjust the spacing between the logo and text */
+      color: white; /* Adjust the color of the text */
+      font-size: 24px; /* Adjust the font size of the text */
+    }
+    .search-section {
+      background-color: #000000;
+      width: 200px;
+      height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+      position: fixed;
+      top: 7;
+      left: 0;
+      color: rgb(198, 198, 198);
+    }
+    .search-section input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-gap: 10px;
+      justify-items: center;
+      margin: 20px;
+      margin-left: 240px; /* Adjust according to the width of the search section */
+    }
+    .image-item {
+      width: 30vh; /* Set width based on 9:16 aspect ratio */
+      height: auto; /* Set height to maintain the aspect ratio */
+      overflow: hidden;
+      position: relative;
+      cursor: pointer; /* Add cursor pointer for indicating clickable */
+      padding: 10px; /* Adjust spacing between images */
+      margin-bottom: 30px; /* Increase margin bottom to create more space between rows */
+    }
+    .image-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .tags {
+      margin: 10px;
+    }
+    .content-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 10px; /* Adjusted padding */
+  border: 1px solid #ccc;
+  display: none;
+  z-index: 999;
+  max-width: 80%; /* Adjusted maximum width */
+  max-height: 80%; /* Adjusted maximum height */
+  overflow: auto; /* Added overflow to enable scrolling if content exceeds size */
+}
+
+    @media screen and (max-width: 980px) {
+      .content-window {
+        width: 90%; /* Adjust width for smaller screens */
+        max-width: auto; /* Set maximum width */
+        height: auto; /* Allow height to adjust according to content */
+      }
+      .content-window img {
+        max-width: 100%; /* Ensure image fits within content window */
+        height: auto; /* Allow image to adjust height accordingly */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <img src="logo.png" alt="logo">
+    <span class="header-text">LET'S COOK</span> <!-- Text added to the header -->
+  </div>
+
+  <div class="search-section">
+    <input type="text" id="search" placeholder="Search tags...">
+    <p>
+      Search by tags like
+    </p>
+    <p>veg</p>
+    <p>breakfast</p>
+    <p>etc.
+    </p>
+  </div>
+
+  <div class="image-grid" id="image-grid">
+    <div class="image-item" data-tags="12,tofu , breakfast, scramble, veg">
+      <img src="tofu.png" alt="tofu">
+      <div class="image-info" style="display: none;">
+        <h2>Tofu Scramble Recipe</h2>
+        <p>Ingredients:</p>
+        <ul>
+            <li>1 block of firm tofu</li>
+            <li>1 tablespoon olive oil or vegetable oil</li>
+            <li>1/2 onion, diced</li>
+            <li>1 bell pepper, diced</li>
+            <li>2 cloves garlic, minced</li>
+            <li>1 teaspoon turmeric</li>
+            <li>1/2 teaspoon cumin</li>
+            <li>1/2 teaspoon paprika</li>
+            <li>Salt and pepper to taste</li>
+            <li>Optional: chopped spinach, mushrooms, tomatoes, or any other vegetables you like</li>
+            <li>Optional: nutritional yeast for added flavor</li>
+          </ul>
+          <p>Instructions:</p>
+          <ol>
+            <li>Press the tofu: Wrap the block of tofu in a clean kitchen towel or paper towels, place it on a plate, and put something heavy on top (like a skillet or a few heavy books). Let it press for about 15-20 minutes to remove excess moisture.</li>
+            <li>Heat the oil in a large skillet over medium heat. Add the diced onion and bell pepper, and sauté for 3-4 minutes until they start to soften.</li>
+            <li>Crumble the pressed tofu into the skillet with your hands or a fork, resembling scrambled eggs.</li>
+            <li>Add the minced garlic, turmeric, cumin, paprika, salt, and pepper to the skillet. Stir well to evenly distribute the spices and cook for another 5-7 minutes, stirring occasionally, until the tofu is heated through and slightly browned.</li>
+            <li>If you're adding any extra vegetables like spinach, mushrooms, or tomatoes, add them to the skillet now and cook for an additional 2-3 minutes until they are softened.</li>
+            <li>Taste and adjust seasoning if necessary. If you like, sprinkle some nutritional yeast over the scramble for a cheesy flavor.</li>
+            <li>Once everything is heated through and well combined, remove the skillet from the heat and serve your tofu scramble hot.</li>
+            <li>Enjoy your delicious and protein-packed tofu scramble! It's perfect for breakfast, brunch, or even a quick and healthy dinner option.</li>
+          </ol>
+      </div>
+    </div>
+    <div class="image-item" data-tags="14,sweet, cakes , pancake, veg">
+      <img src="pancake.png" alt="pancake">
+      <div class="image-info" style="display: none;">
+        <h2>Pancake Recipe</h2>
+        <h2>Ingredients:</h2>
+        <ul>
+          <li>1 cup rolled oats</li>
+          <li>1 ripe banana</li>
+          <li>1 cup unsweetened almond milk (or any plant-based milk of your choice)</li>
+          <li>2 tablespoons ground flaxseed meal</li>
+          <li>1 tablespoon maple syrup (optional, for sweetness)</li>
+          <li>1 teaspoon vanilla extract</li>
+          <li>1 teaspoon baking powder</li>
+          <li>1/2 teaspoon cinnamon (optional)</li>
+          <li>Pinch of salt</li>
+          <li>1/2 cup vegan protein powder (such as pea protein, soy protein, or brown rice protein)</li>
+          <li>Coconut oil or cooking spray, for cooking</li>
+        </ul>
+        <h2>Instructions:</h2>
+    <ol>
+      <li><strong>Prepare the Batter:</strong>
+        <ul>
+          <li>In a blender or food processor, combine the rolled oats, banana, almond milk, flaxseed meal, maple syrup (if using), vanilla extract, baking powder, cinnamon (if using), and salt. Blend until smooth and creamy.</li>
+          <li>Transfer the mixture to a mixing bowl.</li>
+        </ul>
+      </li>
+      <li><strong>Add Protein Powder:</strong>
+        <ul>
+          <li>Add the vegan protein powder to the pancake batter and stir until well combined. Adjust the consistency by adding a little more almond milk if the batter is too thick.</li>
+        </ul>
+      </li>
+      <li><strong>Heat the Pan:</strong>
+        <ul>
+          <li>Heat a non-stick skillet or griddle over medium heat. Lightly grease the surface with coconut oil or cooking spray.</li>
+        </ul>
+      </li>
+      <li><strong>Cook the Pancakes:</strong>
+        <ul>
+          <li>Pour 1/4 cup of batter onto the skillet for each pancake. Cook until bubbles form on the surface, then flip and cook until golden brown on the other side. Repeat with the remaining batter.</li>
+        </ul>
+      </li>
+      <li><strong>Serve:</strong>
+        <ul>
+          <li>Serve the pancakes warm with your favorite toppings, such as sliced bananas, berries, nut butter, or a drizzle of maple syrup.</li>
+        </ul>
+      </li>
+    </ol>
+      </div>
+    </div>
+    <div class="image-item" data-tags="15,besan, indian , breakfast, veg">
+      <img src="besan chilla.png" alt="besan chilla">
+      <div class="image-info" style="display: none;">
+        <h2>Besan Chilla Recipe</h2>
+        <h1>Besan Chilla Recipe</h1>
+
+        <h2>Ingredients:</h2>
+        <ul>
+          <li>1 cup besan (gram flour)</li>
+          <li>1 small onion, finely chopped</li>
+          <li>1 small tomato, finely chopped</li>
+          <li>1 green chili, finely chopped (adjust to taste)</li>
+          <li>1/4 cup chopped fresh coriander leaves</li>
+          <li>1/2 teaspoon cumin seeds</li>
+          <li>1/2 teaspoon turmeric powder</li>
+          <li>Salt to taste</li>
+          <li>Water, as needed</li>
+          <li>Cooking oil or ghee, for cooking</li>
+        </ul>
+      
+        <h2>Instructions:</h2>
+      
+        <h3>Prepare the Batter:</h3>
+        <ol>
+          <li>In a mixing bowl, combine the besan (gram flour), chopped onion, tomato, green chili, coriander leaves, cumin seeds, turmeric powder, and salt. Mix well.</li>
+          <li>Gradually add water to the besan mixture, stirring continuously, until you achieve a smooth and pourable batter consistency. The batter should not be too thick or too thin.</li>
+          <li>Allow the batter to rest for about 10-15 minutes. This allows the flavors to meld together and the besan to absorb the water.</li>
+        </ol>
+      
+        <h3>Cook the Chillas:</h3>
+        <ol>
+          <li>Heat a non-stick skillet or griddle over medium heat. You can lightly grease the surface with oil if needed, although it's not always necessary.</li>
+          <li>Pour a ladleful of the batter onto the center of the hot skillet. Using the back of the ladle, spread the batter in a circular motion to form a thin pancake (chilla).</li>
+          <li>Drizzle a little oil or ghee around the edges of the chilla to help it cook and become crisp.</li>
+          <li>Cook the chilla for 2-3 minutes on one side until golden brown and crisp. Then, carefully flip it over and cook for another 2-3 minutes on the other side.</li>
+          <li>Repeat the process with the remaining batter, making as many chillas as desired.</li>
+        </ol>
+      
+        <h3>Serve:</h3>
+        <p>Serve the besan chillas hot with your favorite chutney, yogurt, or pickle on the side.</p>
+      </div>
+    </div>
+    <div class="image-item" data-tags="16,beans, lunch, quick, veg">
+      <img src="black bean.png" alt="black bean">
+      <div class="image-info" style="display: none;">
+        <h2>Black Bean Salad Recipe</h2>
+        <h2>Ingredients:</h2>
+  <h3>For the Black Bean Filling:</h3>
+  <ul>
+    <li>1 can (15 oz) black beans, drained and rinsed</li>
+    <li>1 small onion, diced</li>
+    <li>1 bell pepper, diced</li>
+    <li>2 cloves garlic, minced</li>
+    <li>1 teaspoon ground cumin</li>
+    <li>1 teaspoon chili powder</li>
+    <li>Salt and pepper to taste</li>
+    <li>1 tablespoon olive oil</li>
+  </ul>
+
+  <h3>For Assembling the Burrito:</h3>
+  <ul>
+    <li>Large whole wheat or gluten-free tortillas</li>
+    <li>Avocado slices</li>
+    <li>Fresh salsa or pico de gallo</li>
+    <li>Vegan cheese, shredded (optional)</li>
+    <li>Fresh cilantro, chopped (optional)</li>
+    <li>Hot sauce (optional)</li>
+  </ul>
+
+  <h2>Instructions:</h2>
+  <h3>Prepare the Black Bean Filling:</h3>
+  <ol>
+    <li>Heat olive oil in a skillet over medium heat. Add diced onion and bell pepper, and sauté until softened, about 5 minutes.</li>
+    <li>Add minced garlic, ground cumin, and chili powder to the skillet. Cook for another minute until fragrant.</li>
+    <li>Add the drained black beans to the skillet. Season with salt and pepper to taste. Cook for a few minutes until heated through and the flavors are well combined. Mash some of the black beans with the back of a fork for a thicker consistency if desired. Remove from heat.</li>
+  </ol>
+
+  <h3>Assemble the Burritos:</h3>
+  <ol>
+    <li>Warm the tortillas in a dry skillet or microwave for a few seconds to make them pliable.</li>
+    <li>Place a generous spoonful of the black bean filling in the center of each tortilla.</li>
+    <li>Add avocado slices, fresh salsa or pico de gallo, vegan cheese (if using), and chopped cilantro on top of the black bean filling.</li>
+  </ol>
+
+  <h3>Fold the Burritos:</h3>
+  <ol>
+    <li>Fold the sides of the tortilla inward, then roll it up tightly from the bottom to form a burrito.</li>
+  </ol>
+
+  <h3>Serve:</h3>
+  <p>Serve the vegan black bean breakfast burritos immediately, with hot sauce on the side if desired.</p>
+
+  <h2>Optional:</h2>
+  <p>You can also wrap the assembled burritos in foil and store them in the refrigerator for later. To reheat, simply place them in a preheated oven at 350°F (175°C) for about 10-15 minutes until heated through.</p>
+      </div>
+    </div>
+    <div class="image-item" data-tags="17,snacks, sandwich, quick, veg">
+      <img src="sandwich.png" alt="sandwich">
+      <div class="image-info" style="display: none;">
+        <h2>Vegetable Sandwich Recipe</h2>
+        h2>Ingredients:</h2>
+  <h3>For the Sandwich Filling:</h3>
+  <ul>
+    <li>2 large carrots, grated</li>
+    <li>1 cucumber, thinly sliced</li>
+    <li>1 bell pepper (any color), thinly sliced</li>
+    <li>1 medium tomato, thinly sliced</li>
+    <li>1/2 red onion, thinly sliced</li>
+    <li>1/2 cup shredded lettuce or spinach leaves</li>
+    <li>Salt and pepper to taste</li>
+    <li>Hummus or vegan spread of your choice</li>
+    <li>Sliced vegan cheese (optional)</li>
+    <li>Whole grain bread slices</li>
+  </ul>
+
+  <h2>Instructions:</h2>
+  <h3>Prepare the Vegetables:</h3>
+  <p>Wash and prepare all the vegetables as mentioned. You can also use a mandoline slicer for thin and uniform slices.</p>
+
+  <h3>Season the Vegetables:</h3>
+  <p>In a bowl, combine the grated carrots, sliced cucumber, bell pepper, tomato, and red onion. Season with salt and pepper to taste. Toss gently to combine.</p>
+
+  <h3>Assemble the Sandwiches:</h3>
+  <ol>
+    <li>Take two slices of whole grain bread. Spread a generous layer of hummus or vegan spread on one side of each slice.</li>
+    <li>Place a layer of shredded lettuce or spinach leaves on one slice of bread.</li>
+    <li>Spoon the prepared vegetable mixture on top of the lettuce/spinach layer.</li>
+    <li>If using vegan cheese, place a slice or two on top of the vegetable mixture.</li>
+    <li>Place the other slice of bread on top to form a sandwich.</li>
+  </ol>
+
+  <h3>Cut and Serve:</h3>
+  <ol>
+    <li>Carefully cut the sandwich in half diagonally or straight down the middle.</li>
+    <li>Serve the vegetable sandwiches immediately, or wrap them in parchment paper or foil for a packed lunch or picnic.</li>
+  </ol>
+
+  <h2>Variations:</h2>
+  <ul>
+    <li>Feel free to customize your vegetable sandwich with your favorite vegetables or spreads. You can add avocado slices, sprouts, grated beetroot, or pickles for extra flavor and nutrition.</li>
+    <li>Experiment with different types of bread, such as whole wheat, multigrain, or sourdough, to suit your preference.</li>
+  </ul>
+      </div>
+    </div>
+    <div class="image-item" data-tags="18, breakfast, oats, quick, veg">
+      <img src="overnight oats.png" alt="overnight oats">
+      <div class="image-info" style="display: none;">
+        <h2>Overnight Oats Recipe</h2>
+        <h2>Ingredients:</h2>
+  <ul>
+    <li>1/2 cup rolled oats (old-fashioned oats)</li>
+    <li>1/2 cup milk (dairy or plant-based)</li>
+    <li>1/2 cup Greek yogurt (or dairy-free yogurt for vegan option)</li>
+    <li>1 tablespoon chia seeds (optional, for added thickness and nutrition)</li>
+    <li>1 tablespoon honey or maple syrup (optional, for sweetness)</li>
+    <li>1/2 teaspoon vanilla extract (optional, for flavor)</li>
+  </ul>
+
+  <h3>Toppings (Optional):</h3>
+  <ul>
+    <li>Sliced fruits (bananas, berries, apples, etc.)</li>
+    <li>Nuts and seeds (almonds, walnuts, pumpkin seeds, etc.)</li>
+    <li>Nut butter or seed butter</li>
+    <li>Shredded coconut</li>
+    <li>Dried fruits (raisins, cranberries, etc.)</li>
+    <li>Cinnamon or other spices</li>
+  </ul>
+
+  <h2>Instructions:</h2>
+  <ol>
+    <li><strong>Mix Ingredients:</strong> In a jar or container with a lid, combine the rolled oats, milk, Greek yogurt, chia seeds (if using), honey or maple syrup (if using), and vanilla extract (if using). Stir well until all ingredients are fully combined.</li>
+    <li><strong>Refrigerate Overnight:</strong> Cover the jar or container with a lid and refrigerate overnight, or for at least 4-6 hours. This allows the oats to soak up the liquid and soften.</li>
+    <li><strong>Add Toppings:</strong> The next morning, give the overnight oats a good stir. If the consistency is too thick, you can add a splash of milk to loosen it up. Add your desired toppings, such as sliced fruits, nuts, seeds, nut butter, shredded coconut, dried fruits, or spices. Be creative and customize your oats to your liking!</li>
+    <li><strong>Enjoy:</strong> Enjoy your delicious and nutritious overnight oats straight from the jar or container. They can be enjoyed cold, or you can heat them up in the microwave for a warm breakfast on colder days.</li>
+  </ol>
+
+  <h2>Tips:</h2>
+  <ul>
+    <li>You can make a batch of overnight oats ahead of time and store them in the refrigerator for up to 3-4 days. This makes for a convenient and quick breakfast option during busy mornings.</li>
+    <li>Feel free to experiment with different flavor combinations and toppings to keep your breakfasts exciting and varied.</li>
+    <li>Adjust the sweetness and thickness of the overnight oats according to your preference by adding more or less honey/maple syrup and milk.</li>
+    <li>Enjoy your creamy and satisfying overnight oats for a nutritious start to your day!</li>
+  </ul>
+      </div>
+    </div>
+    <div class="image-item" data-tags="veg, fruits, quick">
+      <img src="chiaseed.png" alt="chiaseed">
+      <div class="image-info" style="display: none;">
+        <h2>Chia Seed Pudding Recipe</h2>
+        <h2>Ingredients:</h2>
+  <ul>
+    <li>1/2 cup chia seeds</li>
+    <li>2 cups milk (dairy or plant-based)</li>
+    <li>1-2 tablespoons honey, maple syrup, or sweetener of choice (optional)</li>
+    <li>1/2 teaspoon vanilla extract (optional)</li>
+  </ul>
+
+  <h3>Toppings (Optional):</h3>
+  <ul>
+    <li>Sliced fruits (strawberries, bananas, blueberries, etc.)</li>
+    <li>Nuts and seeds (almonds, walnuts, pumpkin seeds, etc.)</li>
+    <li>Granola or muesli</li>
+    <li>Shredded coconut</li>
+    <li>Honey or maple syrup for drizzling</li>
+    <li>Cinnamon or cocoa powder for sprinkling</li>
+  </ul>
+
+  <h2>Instructions:</h2>
+  <ol>
+    <li><strong>Mix Ingredients:</strong> In a bowl or jar, combine the chia seeds, milk, honey or sweetener (if using), and vanilla extract (if using). Stir well until all ingredients are evenly mixed.</li>
+    <li><strong>Let it Sit:</strong> Cover the bowl or jar and refrigerate for at least 2-3 hours, or preferably overnight. During this time, the chia seeds will absorb the liquid and thicken to create a pudding-like consistency.</li>
+    <li><strong>Stir and Serve:</strong> Once the chia pudding has reached the desired consistency, give it a good stir. If it's too thick, you can add a little more milk to adjust the consistency. </li>
+    <li><strong>Add Toppings:</strong> Serve the chia seed pudding in individual bowls or jars, and add your favorite toppings such as sliced fruits, nuts, seeds, granola, shredded coconut, honey, or spices like cinnamon or cocoa powder.</li>
+    <li><strong>Enjoy:</strong> Enjoy your delicious and nutritious chia seed pudding as a healthy breakfast, snack, or dessert!</li>
+  </ol>
+
+  <h2>Tips:</h2>
+  <ul>
+    <li>Feel free to adjust the sweetness of the pudding by adding more or less honey, maple syrup, or sweetener according to your preference.</li>
+    <li>Experiment with different flavors by adding ingredients like cocoa powder, matcha powder, or flavored extracts such as almond or coconut.</li>
+    <li>Chia seed pudding can be stored in the refrigerator for up to 3-4 days, making it a great option for meal prep.</li>
+  </ul>
+      </div>
+    </div>
+    <div class="image-item" data-tags="20,yogurt, fruits, breakfast">
+      <img src="greekyogurt.png" alt="Fruits">
+      <div class="image-info" style="display: none;">
+        <h2>Greek Yogurt Bowl Recipe</h2>
+        <p>This is a delicious Greek yogurt bowl recipe with assorted fruits.</p>
+      </div>
+    </div>
+    <div class="image-item" data-tags="1,chicken , lunch, dinner">
+      <img src="chikenskewers.png" alt="skewres">
+      <div class="image-info" style="display: none;">
+        <h2>Chicken Skewers Recipe</h2>
+        <h2>Ingredients:</h2>
+        <ul>
+          <li>1 cup Greek yogurt</li>
+          <li>Assorted fruits (such as berries, sliced bananas, chopped apples, etc.)</li>
+          <li>Nuts and seeds (such as almonds, walnuts, chia seeds, etc.)</li>
+          <li>Granola or muesli</li>
+          <li>Honey or maple syrup (optional, for added sweetness)</li>
+          <li>Shredded coconut (optional, for garnish)</li>
+        </ul>
+      
+        <h2>Instructions:</h2>
+        <ol>
+          <li><strong>Prepare Ingredients:</strong> Wash and prepare the assorted fruits by slicing or chopping them as desired.</li>
+          <li><strong>Assemble the Bowl:</strong> In a serving bowl, add a generous portion of Greek yogurt as the base.</li>
+          <li><strong>Add Fruits and Toppings:</strong> Arrange the assorted fruits, nuts, seeds, and granola on top of the Greek yogurt.</li>
+          <li><strong>Drizzle with Honey or Maple Syrup (Optional):</strong> If desired, drizzle some honey or maple syrup over the yogurt bowl for added sweetness.</li>
+          <li><strong>Garnish:</strong> Garnish the yogurt bowl with shredded coconut for extra flavor and texture.</li>
+          <li><strong>Enjoy:</strong> Enjoy your delicious and nutritious Greek yogurt bowl as a satisfying breakfast or snack!</li>
+        </ol>
+      
+        <h2>Tips:</h2>
+        <ul>
+          <li>Feel free to customize your yogurt bowl with your favorite fruits, nuts, seeds, and toppings for endless flavor combinations.</li>
+          <li>For added protein and crunch, you can incorporate ingredients like hemp seeds, pumpkin seeds, or sliced almonds.</li>
+          <li>To make your yogurt bowl vegan, you can use dairy-free yogurt alternatives such as almond milk yogurt or coconut yogurt.</li>
+          <li>Experiment with different flavors of Greek yogurt, such as plain, vanilla, or fruit-flavored varieties, to suit your taste preferences.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="image-item" data-tags="2, egg, breakfast , quick, non-veg">
+      <img src="omellete feta.png" alt="omlette">
+      <div class="image-info" style="display: none;">
+        <h2>Feta Omelette Recipe</h2>
+        <h2>Ingredients:</h2>
+  <ul>
+    <li>2 large eggs</li>
+    <li>1/4 cup crumbled feta cheese</li>
+    <li>1 tablespoon chopped fresh herbs (such as parsley, dill, or chives)</li>
+    <li>Salt and pepper to taste</li>
+    <li>1 tablespoon olive oil or butter</li>
+  </ul>
+
+  <h2>Instructions:</h2>
+  <ol>
+    <li><strong>Whisk Eggs:</strong> In a bowl, whisk the eggs until well beaten.</li>
+    <li><strong>Season:</strong> Season the beaten eggs with salt and pepper to taste.</li>
+    <li><strong>Heat Pan:</strong> Heat the olive oil or butter in a non-stick skillet over medium heat.</li>
+    <li><strong>Pour Eggs:</strong> Pour the beaten eggs into the skillet, swirling to spread them evenly across the pan.</li>
+    <li><strong>Add Feta:</strong> Sprinkle the crumbled feta cheese evenly over one half of the omelette.</li>
+    <li><strong>Add Herbs:</strong> Sprinkle the chopped fresh herbs over the feta cheese.</li>
+    <li><strong>Fold:</strong> Using a spatula, gently fold the other half of the omelette over the side with the feta cheese and herbs.</li>
+    <li><strong>Cook:</strong> Cook the omelette for another 1-2 minutes until the cheese is melted and the eggs are cooked through.</li>
+    <li><strong>Serve:</strong> Slide the omelette onto a plate and serve hot.</li>
+  </ol>
+
+  <h2>Tips:</h2>
+  <ul>
+    <li>Feel free to customize your omelette by adding other ingredients such as sautéed vegetables, cooked meats, or additional cheeses.</li>
+    <li>For a creamier texture, you can add a splash of milk or cream to the beaten eggs before cooking.</li>
+    <li>Experiment with different herbs and spices to enhance the flavor of your omelette.</li>
+    <li>Serve your feta omelette with toast, salad, or your favorite breakfast sides for a complete meal.</li>
+  </ul>
+      </div>
+    </div>
+    <div class="image-item" data-tags="3, egg, bhurji , dinner, non-veg">
+      <img src="egg bhurji.png" alt="egg bhurji">
+      <div class="image-info" style="display: none;">
+        <h2>Egg Bhurji Recipe</h2>
+        <h2>Ingredients:</h2>
+  <ul>
+    <li>4 eggs</li>
+    <li>1 onion, finely chopped</li>
+    <li>1 tomato, finely chopped</li>
+    <li>2 green chilies, finely chopped</li>
+    <li>1/2 teaspoon turmeric powder</li>
+    <li>1/2 teaspoon red chili powder</li>
+    <li>1/2 teaspoon garam masala powder</li>
+    <li>Salt to taste</li>
+    <li>2 tablespoons cooking oil</li>
+    <li>Fresh coriander leaves, chopped for garnish</li>
+  </ul>
+
+  <h2>Instructions:</h2>
+  <ol>
+    <li><strong>Prepare Ingredients:</strong> Finely chop the onion, tomato, and green chilies.</li>
+    <li><strong>Scramble Eggs:</strong> In a bowl, beat the eggs well until smooth.</li>
+    <li><strong>Sauté:</strong> Heat oil in a pan over medium heat. Add chopped onions and green chilies. Sauté until onions turn translucent.</li>
+    <li><strong>Add Tomatoes:</strong> Add chopped tomatoes to the pan. Cook until tomatoes soften.</li>
+    <li><strong>Season:</strong> Add turmeric powder, red chili powder, garam masala powder, and salt to the pan. Mix well and cook for a minute.</li>
+    <li><strong>Add Eggs:</strong> Pour beaten eggs into the pan. Stir continuously to scramble the eggs and mix them with the masala.</li>
+    <li><strong>Cook:</strong> Cook until the eggs are fully cooked and the mixture is dry to your desired consistency.</li>
+    <li><strong>Garnish:</strong> Garnish with freshly chopped coriander leaves.</li>
+    <li><strong>Serve:</strong> Serve hot with roti, bread, or rice.</li>
+  </ol>
+
+  <h2>Tips:</h2>
+  <ul>
+    <li>You can customize the spiciness of the egg bhurji by adjusting the amount of green chilies and red chili powder.</li>
+    <li>Feel free to add other vegetables like bell peppers or peas for extra flavor and nutrition.</li>
+    <li>For a creamier texture, you can add a tablespoon of milk or cream to the beaten eggs before cooking.</li>
+    <li>Egg bhurji makes a delicious filling for sandwiches or wraps.</li>
+  </ul>
+      </div>
+    </div>
+    <div class="image-item" data-tags="4, muttonkebab, kebab, mutton, dinner, non-veg">
+      <img src="muttonkebab.png" alt="mutton kebab">
+      <div class="image-info" style="display: none;">
+        <h2>Mutton Kebab Recipe</h2>
+        <h2>Ingredients:</h2>
+  <ul>
+    <li>500 grams mutton (boneless), minced</li>
+    <li>1 large onion, finely chopped</li>
+    <li>2 green chilies, finely chopped</li>
+    <li>2 tablespoons ginger-garlic paste</li>
+    <li>1/4 cup fresh coriander leaves, chopped</li>
+    <li>1/4 cup fresh mint leaves, chopped</li>
+    <li>1 teaspoon garam masala powder</li>
+    <li>1 teaspoon red chili powder</li>
+    <li>1/2 teaspoon turmeric powder</li>
+    <li>1 teaspoon coriander powder</li>
+    <li>1 teaspoon cumin powder</li>
+    <li>Salt to taste</li>
+    <li>2 tablespoons cooking oil</li>
+    <li>Skewers for grilling</li>
+  </ul>
+
+  <h2>Instructions:</h2>
+  <ol>
+    <li><strong>Prepare the Mutton:</strong> In a mixing bowl, combine minced mutton, chopped onion, green chilies, ginger-garlic paste, fresh coriander leaves, fresh mint leaves, garam masala powder, red chili powder, turmeric powder, coriander powder, cumin powder, and salt. Mix well to combine.</li>
+    <li><strong>Marinate:</strong> Cover the bowl and let the mutton mixture marinate in the refrigerator for at least 2 hours, or preferably overnight, to allow the flavors to meld together.</li>
+    <li><strong>Shape the Kebabs:</strong> After marinating, take portions of the mutton mixture and shape them onto skewers to form kebabs. Press the mixture firmly onto the skewers to ensure they hold their shape during grilling.</li>
+    <li><strong>Grill:</strong> Preheat a grill or grill pan over medium-high heat. Brush the surface with cooking oil to prevent sticking. Place the mutton kebabs on the grill and cook for 6-8 minutes on each side, or until they are fully cooked and have charred grill marks.</li>
+    <li><strong>Serve:</strong> Once cooked, remove the mutton kebabs from the grill and serve hot with your favorite dipping sauce or chutney.</li>
+  </ol>
+
+  <h2>Tips:</h2>
+  <ul>
+    <li>For a leaner option, you can use lean mutton cuts or remove excess fat from the minced mutton before marinating.</li>
+    <li>If using wooden skewers, remember to soak them in water for at least 30 minutes before threading the mutton mixture to prevent them from burning during grilling.</li>
+    <li>You can adjust the spice levels according to your preference by adding more or less red chili powder and green chilies.</li>
+    <li>Feel free to serve the mutton kebabs with naan bread, rice, or salad for a complete meal.</li>
+  </ul>
+      </div>
+    </div>
+    <div class="image-item" data-tags="5, egg, curry, quick, eggcurry, non-veg">
+      <img src="eggcurry.png" alt="egg curry">
+      <div class="image-info" style="display: none;">
+        <h2>Egg Curry Recipe</h2>
+        <h2>Ingredients:</h2>
+  <ul>
+    <li>4 hard-boiled eggs, peeled and halved</li>
+    <li>1 onion, finely chopped</li>
+    <li>2 tomatoes, finely chopped</li>
+    <li>2 cloves garlic, minced</li>
+    <li>1-inch piece of ginger, grated</li>
+    <li>1 green chili, chopped (adjust to taste)</li>
+    <li>1 teaspoon cumin seeds</li>
+    <li>1 teaspoon coriander powder</li>
+    <li>1/2 teaspoon turmeric powder</li>
+    <li>1/2 teaspoon red chili powder (adjust to taste)</li>
+    <li>1/2 teaspoon garam masala powder</li>
+    <li>Salt to taste</li>
+    <li>2 tablespoons cooking oil</li>
+    <li>Fresh coriander leaves for garnish</li>
+  </ul>
+
+  <h2>Instructions:</h2>
+  <ol>
+    <li><strong>Prepare Ingredients:</strong> Peel and halve the hard-boiled eggs. Finely chop the onion, tomatoes, and green chili. Mince the garlic and grate the ginger.</li>
+    <li><strong>Sauté Aromatics:</strong> Heat oil in a pan over medium heat. Add cumin seeds and let them splutter. Add chopped onion, garlic, ginger, and green chili. Sauté until onions are translucent.</li>
+    <li><strong>Add Spices:</strong> Add coriander powder, turmeric powder, red chili powder, and garam masala powder to the pan. Stir well and cook for a minute until the spices are fragrant.</li>
+    <li><strong>Cook Tomatoes:</strong> Add chopped tomatoes to the pan. Cook until tomatoes are soft and the mixture thickens.</li>
+    <li><strong>Simmer:</strong> Add a little water if the mixture is too dry. Season with salt and let the curry simmer for a few minutes to allow the flavors to meld together.</li>
+    <li><strong>Add Eggs:</strong> Gently add the halved hard-boiled eggs to the curry. Spoon the curry over the eggs to coat them evenly.</li>
+    <li><strong>Finish:</strong> Cook for another 2-3 minutes until the eggs are heated through and the curry reaches your desired consistency.</li>
+    <li><strong>Garnish:</strong> Garnish with freshly chopped coriander leaves.</li>
+    <li><strong>Serve:</strong> Serve the healthy egg curry hot with rice, roti, or bread.</li>
+  </ol>
+
+  <h2>Tips:</h2>
+  <ul>
+    <li>To reduce the calorie content, you can use a non-stick pan and minimize the amount of oil used for sautéing.</li>
+    <li>For a creamier texture, you can add a tablespoon of yogurt or coconut milk to the curry.</li>
+    <li>Feel free to adjust the spice levels according to your preference by increasing or decreasing the amount of red chili powder and green chilies.</li>
+    <li>Adding vegetables like bell peppers, peas, or spinach can increase the nutritional value of the curry.</li>
+  </ul>
+      </div>
+    </div>
+    <div class="image-item" data-tags="6, fish, curry, lunch, non-veg">
+      <img src="fishcurry.png" alt="fish curry">
+      <div class="image-info" style="display: none;">
+        <h2>Fish Curry Recipe</h2>
+        <h2>Ingredients:</h2>
+  <ul>
+    <li>500 grams fish fillets (such as salmon, cod, or tilapia), cut into chunks</li>
+    <li>1 onion, finely chopped</li>
+    <li>2 tomatoes, finely chopped</li>
+    <li>2 cloves garlic, minced</li>
+    <li>1-inch piece of ginger, grated</li>
+    <li>1 green chili, chopped (adjust to taste)</li>
+    <li>1 teaspoon cumin seeds</li>
+    <li>1 teaspoon coriander powder</li>
+    <li>1/2 teaspoon turmeric powder</li>
+    <li>1/2 teaspoon red chili powder (adjust to taste)</li>
+    <li>1/2 teaspoon garam masala powder</li>
+    <li>Salt to taste</li>
+    <li>2 tablespoons cooking oil</li>
+    <li>Fresh coriander leaves for garnish</li>
+  </ul>
+
+  <h2>Instructions:</h2>
+  <ol>
+    <li><strong>Prepare Ingredients:</strong> Cut the fish fillets into bite-sized chunks. Finely chop the onion and tomatoes. Mince the garlic, grate the ginger, and chop the green chili.</li>
+    <li><strong>Sauté Aromatics:</strong> Heat oil in a pan over medium heat. Add cumin seeds and let them splutter. Add chopped onion, garlic, ginger, and green chili. Sauté until onions are translucent.</li>
+    <li><strong>Add Spices:</strong> Add coriander powder, turmeric powder, red chili powder, and garam masala powder to the pan. Stir well and cook for a minute until the spices are fragrant.</li>
+    <li><strong>Cook Tomatoes:</strong> Add chopped tomatoes to the pan. Cook until tomatoes are soft and the mixture thickens.</li>
+    <li><strong>Add Fish:</strong> Gently add the fish chunks to the curry. Spoon the curry over the fish to coat them evenly.</li>
+    <li><strong>Simmer:</strong> Season with salt and let the curry simmer for about 10-15 minutes until the fish is cooked through and the flavors are well blended.</li>
+    <li><strong>Garnish:</strong> Garnish with freshly chopped coriander leaves.</li>
+    <li><strong>Serve:</strong> Serve the high protein fish curry hot with rice or bread.</li>
+  </ol>
+
+  <h2>Tips:</h2>
+  <ul>
+    <li>Choose fish varieties like salmon, cod, or tilapia that are rich in protein and omega-3 fatty acids.</li>
+    <li>You can adjust the spice levels according to your preference by increasing or decreasing the amount of red chili powder and green chilies.</li>
+    <li>Adding coconut milk or yogurt to the curry can enhance the creaminess and flavor.</li>
+    <li>For a thicker curry, you can blend some of the cooked onions and tomatoes before adding the fish.</li>
+  </ul>
+      </div>
+    </div>
+    <div class="image-item" data-tags="7, tikka, salad, breakfast, non-veg, chicken">
+      <img src="tikka salad.png" alt="tikka salad">
+      <div class="image-info" style="display: none;">
+        <h2>Tikka Salad Recipe</h2>
+        <h1>Chicken Tikka Salad Recipe</h1>
+
+  <h2>Ingredients:</h2>
+  <ul>
+    <li>2 boneless, skinless chicken breasts</li>
+    <li>1/2 cup yogurt</li>
+    <li>2 tablespoons tikka masala paste</li>
+    <li>1 tablespoon lemon juice</li>
+    <li>1 teaspoon ground cumin</li>
+    <li>1 teaspoon paprika</li>
+    <li>1 teaspoon ground turmeric</li>
+    <li>1/2 teaspoon ground coriander</li>
+    <li>1/2 teaspoon ground cinnamon</li>
+    <li>Salt and pepper to taste</li>
+    <li>2 tablespoons olive oil</li>
+    <li>4 cups mixed salad greens</li>
+    <li>1 cucumber, sliced</li>
+    <li>1 red onion, thinly sliced</li>
+    <li>1 cup cherry tomatoes, halved</li>
+    <li>1/4 cup chopped fresh cilantro</li>
+    <li>1/4 cup chopped fresh mint</li>
+    <li>1/4 cup plain yogurt, for serving</li>
+    <li>Lemon wedges, for serving</li>
+  </ul>
+
+  <h2>Instructions:</h2>
+  <ol>
+    <li><strong>Marinate Chicken:</strong> In a bowl, mix together yogurt, tikka masala paste, lemon juice, ground cumin, paprika, turmeric, coriander, cinnamon, salt, and pepper. Add chicken breasts to the marinade, turning to coat. Cover and refrigerate for at least 1 hour, or overnight for best flavor.</li>
+    <li><strong>Cook Chicken:</strong> Preheat grill or grill pan to medium-high heat. Brush chicken breasts with olive oil and grill for 6-8 minutes per side, or until cooked through and juices run clear. Remove from heat and let rest for a few minutes before slicing.</li>
+    <li><strong>Assemble Salad:</strong> In a large bowl, combine mixed salad greens, sliced cucumber, red onion, cherry tomatoes, chopped cilantro, and chopped mint.</li>
+    <li><strong>Slice Chicken:</strong> Slice grilled chicken breasts into thin strips.</li>
+    <li><strong>Assemble Salad:</strong> Add sliced chicken to the salad bowl.</li>
+    <li><strong>Serve:</strong> Divide salad among serving plates. Drizzle with plain yogurt and serve with lemon wedges on the side.</li>
+  </ol>
+
+  <h2>Tips:</h2>
+  <ul>
+    <li>You can use store-bought tikka masala paste or make your own by blending together spices with a little tomato paste.</li>
+    <li>For a vegetarian option, you can substitute chicken with paneer or tofu and follow the same marinade and grilling process.</li>
+    <li>Feel free to customize the salad with your favorite vegetables or add-ons like avocado, bell peppers, or toasted nuts.</li>
+    <li>Serve the salad with warm naan bread or pita for a complete meal.</li>
+  </ul>
+      </div>
+    </div>
+    
+  <div class="content-window" id="content-window">
+    <button id="close-button">Close</button>
+    <div id="image-info"></div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('search');
+    const imageGrid = document.getElementById('image-grid');
+    const imageItems = Array.from(imageGrid.getElementsByClassName('image-item'));
+    const contentWindow = document.getElementById('content-window');
+    const imageInfo = document.getElementById('image-info');
+    const closeButton = document.getElementById('close-button');
+
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      imageItems.forEach(item => {
+        const tags = item.dataset.tags.toLowerCase();
+        if (tags.includes(searchTerm)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+
+    imageItems.forEach(item => {
+      item.addEventListener('click', function() {
+        const imageSrc = this.querySelector('img').src;
+        const altText = this.querySelector('img').alt;
+        const tags = this.dataset.tags.split(',').map(tag => tag.trim().toLowerCase());
+        let content = `<img src="${imageSrc}" alt="${altText}">`;
+        const infoDiv = this.querySelector('.image-info');
+        if (infoDiv) {
+          content += infoDiv.innerHTML;
+        }
+        imageInfo.innerHTML = content;
+        contentWindow.style.display = 'block';
+      });
+    });
+
+    closeButton.addEventListener('click', function() {
+      contentWindow.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>

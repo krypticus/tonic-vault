@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+
+.content-box {
+    width: 50%;
+    height: auto;
+    margin: auto;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: larger;
+}
+
+header {
+    background-image: url(file:///C:/Users/Krishna/Desktop/assets/low-poly-grid-haikei.svg);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+section {
+    text-align: center;
+    margin: auto;
+    background-color: white;
+}
+
+.section-text {  
+    padding: 20px; /* Add padding only to the section with text */
+}
+
+.centered-image {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+}
+
+.info-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.centered-image:hover .info-window {
+    display: block;
+}
+
+.flex-container {
+    background-color: #E4E4E4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row; /* Flex horizontally */
+    flex-wrap: wrap; /* Allow flex items to wrap to the next line */
+}
+
+.split {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    max-width: 50%; /* Each image takes up 50% of the container width */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.split img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: black;
+    text-align: center;
+    color: white;
+    margin: auto;
+    padding:0.1%;
+}
+
+@media screen and (max-width: 1368px) {
+    .content-box {
+        width: 100%;
+    }
+
+    .flex-container {
+        flex-direction: column; /* Flex vertically */
+    }
+
+    .split {
+        max-width: 100%; /* Each image takes up full width */
+    }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+    <img width="40%" height="auto" src="logo.png" alt="Header Image" class="centered-image">
+</header>
+
+<section>
+    <div class="content-box">
+        <p><u>About Us:</u></p>
+        <p>Welcome to tonic vault your ultimate destination for easy-to-follow recipes and practical tips tailored for fitness enthusiasts. We understand that maintaining a healthy lifestyle while juggling the demands of daily life can be challenging. That's why we're here to simplify your journey towards better nutrition and fitness with our curated collection of recipes and expert advice.
+        </p>
+        <p>At <strong>Tonic Vault</strong>, we understand the joy and satisfaction that comes from preparing and enjoying delicious meals. Whether you're a seasoned chef or just beginning your culinary journey, our platform is designed to inspire and empower you to create culinary masterpieces in the comfort of your own kitchen.</p>
+    
+        <p>We believe that great recipes should be accessible to everyone, which is why we scour the internet to handpick the finest recipes from trusted sources, including food blogs, cooking websites, and renowned chefs. From quick and easy weeknight dinners to decadent desserts and everything in between, our diverse selection caters to every taste, dietary preference, and skill level.</p>
+        
+        <p>But <strong>Tonic Vault</strong> is more than just a recipe repository. It's a community of food enthusiasts, sharing their passion for cooking and exploring new flavors. Whether you're looking for inspiration, seeking advice, or simply want to connect with fellow foodies, our platform provides a welcoming space to learn, discover, and engage with like-minded individuals.</p>
+        
+    </div>
+</section>
+
+<section>
+    <div class="flex-container">
+        <div class="split">
+            <div class="centered-image">
+               <a href="letscook.html"> <img src="start.png" alt="Left Image"></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>Contact Us: example@example.com</p>
+</footer>
+
+<script>
+    const images = document.querySelectorAll('.centered-image');
+    images.forEach(image => {
+        image.addEventListener('mouseenter', () => {
+            const infoWindow = image.querySelector('.info-window');
+            infoWindow.style.display = 'block';
+        });
+        image.addEventListener('mouseleave', () => {
+            const infoWindow = image.querySelector('.info-window');
+            infoWindow.style.display = 'none';
+        });
+    });
+</script>
+</body>
+</html>
+
+
