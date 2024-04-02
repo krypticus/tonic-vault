@@ -1,279 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <style>
-
-.content-box {
-    width: 50%;
-    height: auto;
-    margin: auto;
-}
-
-body {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>home</title>
+<style>
+  body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    font-size: larger;
-}
+    padding: 0;
+    background-color: #000000; /* Light gray background */
+    font-family: Arial, sans-serif;
+  }
 
-header {
-    background-color: #000000;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    font-size: larger;
-}
-
-
-header {
-    
-    color: #000000;
-    padding: 20px;
-}
-
-.header-image {
-    width: 40%;
-    height: auto;
-    display: block;
-    margin: auto;
-}
-
-.content-section {
+  .container {
     display: flex;
-}
+    flex-direction: row;
+    height: 100vh;
+  }
 
-.content-box {
-    width: 50%;
-    padding: 20px;
-}
-
-.image-box {
-    position: relative;
-    width: 50%;
-}
-
-.image-box img {
-    width: 100%;
-    height: auto;
-}
-
-.info-window {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    display: none;
-}
-
-footer {
-    background-color: black;
-    text-align: center;
-    color: white;
-    padding: 10px;
-
-
-    color: #fff;
-    padding: 20px;
-}
-
-.header-image {
-    width: 40%;
-    height: auto;
-    display: block;
-    margin: auto;
-}
-
-.content-section {
-    display: flex;
-}
-
-.content-box {
-    width: 50%;
-    padding: 20px;
-}
-
-.image-box {
-    position: relative;
-    width: 50%;
-}
-
-.image-box img {
-    width: 100%;
-    height: auto;
-}
-
-.info-window {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    display: none;
-}
-
-footer {
-    background-color: black;
-    text-align: center;
-    color: white;
-    padding: 10px;
-
-
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-}
-
-.left {
-    float: left;
-}
-
-.right {
-    float: right;
-}
-
-section {
-    text-align: center;
-    margin: auto;
-    background-color: white;
-}
-
-.section-text {  
-    padding: 20px; /* Add padding only to the section with text */
-}
-
-.centered-image {
-    display: block;
-    margin: 0 auto;
-    position: relative;
-    cursor: pointer;
-}
-
-.info-window {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    display: none;
-}
-
-.centered-image:hover .info-window {
-    display: block;
-}
-
-.flex-container {
-    background-color: #E4E4E4;
+  .left-section,
+  .right-section {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row; /* Flex horizontally */
-    flex-wrap: wrap; /* Allow flex items to wrap to the next line */
-}
+  }
 
-.split {
-    flex: 1;
-    padding: 20px;
-    text-align: center;
-    max-width: 50%; /* Each image takes up 50% of the container width */
-    box-sizing: border-box; /* Include padding in width calculation */
-}
-
-.split img {
-    max-width: 100%;
-    max-height: 100%;
-    display: block;
-    margin: 0 auto;
-}
-
-footer {
-    background-color: black;
-    text-align: center;
+  .left-section {
+    background-color: #000000; /* Dark gray background for left section */
     color: white;
-    margin: auto;
-    padding:0.1%;
-}
+  }
 
-@media screen and (max-width: 1368px) {
-    .content-box {
-        width: 100%;
+  .right-section {
+    background-color: #000000; /* Medium gray background for right section */
+    display: flex;
+    flex-direction: column; /* Stack images vertically */
+    align-items: center;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* To remove extra space below the image */
+  }
+
+  .right-section img {
+    margin-bottom: 20px; /* Spacing between images */
+  }
+
+  .bottom-image{
+    width: 250px;
+  } 
+
+
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column; /* Stack sections vertically on smaller screens */
     }
 
-    .flex-container {
-        flex-direction: column; /* Flex vertically */
+    .left-section,
+    .right-section {
+      flex: none; /* Remove flex grow for smaller screens */
+      height: auto;
     }
 
-    .split {
-        max-width: 100%; /* Each image takes up full width */
+    img {
+      max-width: 100%; /* Adjust image size on smaller screens */
     }
-}
 
+
+
+  }
 </style>
 </head>
 <body>
 
-<header>
+<div class="container">
+  <div class="left-section">
+    <img src="logo.png" alt="Left Image">
+  </div>
+  <div class="right-section">
+    <img src="Screenshot 2024-04-02 141515.png" alt="Top Image">
+    <a href="letscook.html"> <img  class="bottom-image" src="Screenshot 2024-04-02 142218.png" alt="Bottom Image"></a>
+  </div>
+</div>
 
-    <img width="40%" height="auto" src="logo.png" alt="Header Image" class="centered-image">
-</header>
-
-<section>
-    <div class="content-box">
-        <p><u>About Us:</u></p>
-        <p>Welcome to tonic vault your ultimate destination for easy-to-follow recipes and practical tips tailored for fitness enthusiasts. We understand that maintaining a healthy lifestyle while juggling the demands of daily life can be challenging. That's why we're here to simplify your journey towards better nutrition and fitness with our curated collection of recipes and expert advice.
-        </p>
-        <p>At <strong>Tonic Vault</strong>, we understand the joy and satisfaction that comes from preparing and enjoying delicious meals. Whether you're a seasoned chef or just beginning your culinary journey, our platform is designed to inspire and empower you to create culinary masterpieces in the comfort of your own kitchen.</p>
-    
-        <p>We believe that great recipes should be accessible to everyone, which is why we scour the internet to handpick the finest recipes from trusted sources, including food blogs, cooking websites, and renowned chefs. From quick and easy weeknight dinners to decadent desserts and everything in between, our diverse selection caters to every taste, dietary preference, and skill level.</p>
-        
-        <p>But <strong>Tonic Vault</strong> is more than just a recipe repository. It's a community of food enthusiasts, sharing their passion for cooking and exploring new flavors. Whether you're looking for inspiration, seeking advice, or simply want to connect with fellow foodies, our platform provides a welcoming space to learn, discover, and engage with like-minded individuals.</p>
-        
-    </div>
-</section>
-
-<section>
-    <div class="flex-container">
-        <div class="split">
-            <div class="centered-image">
-               <a href="letscook.html"> <img src="start.png" alt="Left Image"></a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <p>Contact Us:tonicvault.eat.gmail.com </p>
-</footer>
-
-<script>
-    const images = document.querySelectorAll('.centered-image');
-    images.forEach(image => {
-        image.addEventListener('mouseenter', () => {
-            const infoWindow = image.querySelector('.info-window');
-            infoWindow.style.display = 'block';
-        });
-        image.addEventListener('mouseleave', () => {
-            const infoWindow = image.querySelector('.info-window');
-            infoWindow.style.display = 'none';
-        });
-    });
-</script>
 </body>
 </html>
-
-
